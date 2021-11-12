@@ -1,14 +1,11 @@
 local Player = game:GetService("Players").LocalPlayer
 local TeleportService = game:GetService("TeleportService")
-local UserInputService = game:GetService("UserInputService")
 local StarterGui = game:GetService("StarterGui")
 local ReplicatedStorage = game:GetService("ReplicatedStorage")
 local Character = Player.Character
 local Humanoid = Character:FindFirstChild("Humanoid")
 local Root = Character:FindFirstChild("HumanoidRootPart")
 local Prefix = "@"
-
-_G.TeleSpeed = false
 
 Player.Chatted:Connect(function(C)
 	if C:match(Prefix .. "iy") or C:match(Prefix .. "infyield") or C:match(Prefix .. "infiniteyield") then
@@ -34,6 +31,7 @@ Player.Chatted:Connect(function(C)
 			Title = "Commands",
 			Text = "Press V to toggle telespeed"
 		})
+		loadstring(game:HttpGet('https://raw.githubusercontent.com/Doxifieq/Dragon-Ball-Z-Final-Stand/main/TeleSpeed.lua'))()
 
 	elseif C:match(Prefix .. "chatlogs") or C:match(Prefix .. "cl") then
 		if Player.PlayerGui.Chat.Frame.ChatChannelParentFrame.Visible == false then
@@ -41,15 +39,5 @@ Player.Chatted:Connect(function(C)
 		else
 			Player.PlayerGui.Chat.Frame.ChatChannelParentFrame.Visible = false
 		end
-	end
-end)
-
-UserInputService.InputBegan:Connect(function(Input, gameProcessedEvent)
-	if gameProcessedEvent then return end
-	if Input.KeyCode == Enum.KeyCode.V then
-		_G.TeleSpeed = not _G.TeleSpeed
-		repeat wait()
-			Root.CFrame = Root.CFrame * CFrame.new(Vector3.new(0, 0, -20))
-		until not _G.TeleSpeed
 	end
 end)
