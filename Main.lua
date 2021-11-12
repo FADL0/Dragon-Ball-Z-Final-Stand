@@ -75,5 +75,20 @@ Player.Chatted:Connect(function(C)
 			Text = "Press K to perform force"
 		})
 		loadstring(game:HttpGet('https://raw.githubusercontent.com/Doxifieq/Dragon-Ball-Z-Final-Stand/main/Force.lua'))()
+
+
+	elseif C:match(Prefix .. "shield") or C:match(Prefix .. "ks") then
+		if Character:FindFirstChild("Blast") then
+			Character:FindFirstChild("Blast").Mesh:Destroy()
+			StarterGui:SetCore("SendNotification", {
+				Title = "Commands",
+				Text = "Use another beam to reset animation"
+			})
+		else
+			StarterGui:SetCore("SendNotification", {
+				Title = "Commands",
+				Text = "Execute command while holding 'Giant Storm'"
+			})
+		end
 	end
 end)
