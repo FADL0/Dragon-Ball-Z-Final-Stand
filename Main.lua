@@ -7,6 +7,8 @@ local Humanoid = Character:FindFirstChild("Humanoid")
 local Root = Character:FindFirstChild("HumanoidRootPart")
 local Prefix = "@"
 
+_G.NoSlow = false
+
 Player.Chatted:Connect(function(C)
 	if C:match(Prefix .. "iy") or C:match(Prefix .. "infyield") or C:match(Prefix .. "infiniteyield") then
 		loadstring(game:HttpGet('https://raw.githubusercontent.com/EdgeIY/infiniteyield/master/source'))()
@@ -51,13 +53,15 @@ Player.Chatted:Connect(function(C)
 		local NSTable = {
 			"Using",
 			"Attacking",
+			"Action",
 			"i",
 			"evasive"
 		}
 
 		Character.ChildAdded:Connect(function(Object)
 			if _G.NoSlow == true then
-				if Object.Name = table.find(NSTable, Object.Name) then
+				if table.find(NSTable, Object.Name) then
+					task.wait()
 					Object:Destroy()
 				end
 			end
