@@ -8,7 +8,7 @@ UserInputService.InputBegan:Connect(function(Input, gameProcessedEvent)
 	if Input.KeyCode == Enum.KeyCode.K then
 		if Character:FindFirstChild("Blast") then
 			Character:FindFirstChild("Blast").Weld:Destroy()
-			task.wait()
+			task.wait(1)
 			Character:FindFirstChild("Blast").Anchored = false
 		end
 	end
