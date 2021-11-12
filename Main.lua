@@ -7,16 +7,16 @@ local Humanoid = Character:FindFirstChild("Humanoid")
 local Root = Character:FindFirstChild("HumanoidRootPart")
 local Prefix = "@"
 
-Player.Chatted:Connect(function(Chat)
-	if Chat == Prefix .. "iy" or Prefix .. "infyield" or Prefix .. "infiniteyield" then
+Player.Chatted:Connect(function(C)
+	if C:match(Prefix .. "iy") or C:match(Prefix .. "infyield") or C:match(Prefix .. "infiniteyield") then
 		loadstring(game:HttpGet('https://raw.githubusercontent.com/EdgeIY/infiniteyield/master/source'))()
 
 
-	elseif Chat == Prefix .. "rj" or Prefix .. "rejoin" or then
+	elseif C:match(Prefix .. "rj") or C:match(Prefix .. "rejoin") then
 		TeleportService:Teleport(game.PlaceId)
 
 
-	elseif Chat == Prefix .. "gm" or Prefix .. "god" or Prefix .. "godmode" then
+	elseif C:match(Prefix .. "god") then
 		local Stats = Character:FindFirstChild("Stats")
 		if Stats:FindFirstChild("Phys-Resist") then
 			Stats:WaitForChild("Phys-Resist"):Destroy()
@@ -26,11 +26,11 @@ Player.Chatted:Connect(function(Chat)
 		end
 
 
-	elseif Chat == Prefix .. "hr" or Prefix .. "reset" or Prefix .. "hardreset" then
+	elseif C:match(Prefix .. "reset") or C:match(Prefix .. "hardreset") or C:match(Prefix .. "hr") then
 		Humanoid.Health = 0
 
 
-	elseif Chat == Prefix .. "ts" or Prefix .. "speed" or "telespeed" then
+	elseif C:match(Prefix .. "telespeed") or C:match(Prefix .. "speed") or C:match(Prefix .. "ts") then
 		loadstring(game:HttpGet('https://raw.githubusercontent.com/Doxifieq/Dragon-Ball-Z-Final-Stand/main/TeleSpeed.lua'))()
 		StarterGui:SetCore("SendNotification", {
 			Title = "Commands",
@@ -38,7 +38,7 @@ Player.Chatted:Connect(function(Chat)
 		})
 
 
-	elseif Chat == Prefix .. "cl" or Prefix .. "chat" or "chatlogs" then
+	elseif C:match(Prefix .. "chatlogs") or C:match(Prefix .. "cl") then
 		if Player.PlayerGui.Chat.Frame.ChatChannelParentFrame.Visible == false then
 			Player.PlayerGui.Chat.Frame.ChatChannelParentFrame.Visible = true
 		else
@@ -46,6 +46,21 @@ Player.Chatted:Connect(function(Chat)
 		end
 
 
-	--elseif
+	elseif C:match(Prefix .. "noslow") or C:match(Prefix .. "ns") then
+		_G.NoSlow = not _G.NoSlow
+		local NSTable = {
+			"Using",
+			"Attacking",
+			"i",
+			"evasive"
+		}
+
+		Character.ChildAdded:Connect(function(Object)
+			if _G.NoSlow == true then
+				if Object.Name = table.find(NSTable, Object.Name) then
+					Object:Destroy()
+				end
+			end
+		end)
 	end
 end)
