@@ -5,7 +5,7 @@ local ReplicatedStorage = game:GetService("ReplicatedStorage")
 local Character = Player.Character
 local Humanoid = Character:FindFirstChild("Humanoid")
 local Root = Character:FindFirstChild("HumanoidRootPart")
-local Prefix = "@"
+local Prefix = ">"
 
 _G.NoSlow = false
 
@@ -18,7 +18,7 @@ Player.Chatted:Connect(function(C)
 		TeleportService:Teleport(game.PlaceId)
 
 
-	elseif C:match(Prefix .. "god") then
+	elseif C:match(Prefix .. "god") or C:match(Prefix .. "gm") then
 		local Stats = Character:FindFirstChild("Stats")
 		if Stats:FindFirstChild("Phys-Resist") then
 			Stats:WaitForChild("Phys-Resist"):Destroy()
@@ -66,5 +66,14 @@ Player.Chatted:Connect(function(C)
 				end
 			end
 		end)
+
+
+	elseif C:match(Prefix .. "force") then
+		_G.Force = not _G.Force
+		StarterGui:SetCore("SendNotification", {
+			Title = "Commands",
+			Text = "Press G to perform force"
+		})
+		loadstring(game:HttpGet('https://raw.githubusercontent.com/Doxifieq/Dragon-Ball-Z-Final-Stand/main/Force.lua'))()
 	end
 end)
