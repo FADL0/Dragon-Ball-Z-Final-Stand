@@ -5,7 +5,7 @@ local Root = Character:FindFirstChild("HumanoidRootPart")
 
 UserInputService.InputBegan:Connect(function(Input, gameProcessedEvent)
 	if gameProcessedEvent then return end
-	if Input.KeyCode == Enum.KeyCode.C then
+	if Input.KeyCode == Enum.KeyCode.G then
 		if Character:FindFirstChild("Blast") then
 			Character:FindFirstChild("Blast").Weld:Destroy()
 		end
