@@ -72,7 +72,7 @@ Player.Chatted:Connect(function(C)
 		_G.Force = not _G.Force
 		StarterGui:SetCore("SendNotification", {
 			Title = "Commands",
-			Text = "Press G to perform force"
+			Text = "Press K to perform force"
 		})
 		loadstring(game:HttpGet('https://raw.githubusercontent.com/Doxifieq/Dragon-Ball-Z-Final-Stand/main/Force.lua'))()
 	end
